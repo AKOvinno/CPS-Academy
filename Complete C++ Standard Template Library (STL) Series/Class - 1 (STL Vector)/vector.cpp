@@ -53,13 +53,13 @@ int main()
     for ( auto u : a ) cout << u << " "; /// 2 3 4 0 0
     cout << endl;
 
-    vector<int>::iterator it;
-    for ( it = a.begin(); it != a.end(); it++ ) cout << *it << " "; /// 2 3 4 0 0
-    cout << endl;
+//    vector<int>::iterator it;
+//    for ( it = a.begin(); it != a.end(); it++ ) cout << *it << " "; /// 2 3 4 0 0
+//    cout << endl;
 
-    a = { 3, 4, 5, 1, 2 };
-
-    sort ( a.begin(), a.end() ); ///O(n*log2(n))
+    a = { 5, 3, 4, 1, 2 };
+    cout << "------------------Sorting---------------------------"<<"\n";
+    sort ( a.begin(), a.end() - 0 ); ///O(n*log2(n))
 
     for ( auto u : a ) cout << u << " "; /// 1 2 3 4 5
     cout << endl;
@@ -69,7 +69,7 @@ int main()
     for ( auto u : a ) cout << u << " "; /// 5 4 3 2 1
     cout << endl;
 
-
+    cout << " Sorting in Descending Order: \n";
     a = { 3, 4, 5, 1, 2 };
     sort ( a.begin(), a.end(), greater<int>() );
 
@@ -95,7 +95,8 @@ int main()
     for ( auto u : a ) cout << u << " "; /// 4 5 1 2
     cout << endl;
 
-    a.erase( a.begin()+2 );
+    cout << "Erase a.end() - 3: \n";
+    a.erase( a.end()-3 );
     for ( auto u : a ) cout << u << " "; /// 4 5 2
     cout << endl;
 
@@ -105,17 +106,32 @@ int main()
     for ( auto u : a ) cout << u << " "; /// 1 2 3 2 2 3 3
     cout << endl;
 
-
     a = { 1, 1, 2, 2, 2, 3, 3 };
-    int n = unique( a.begin(), a.end() ) - a.begin();
-
-    cout << n << endl; /// 3
+    // int n = unique( a.begin(), a.end() ) - a.begin();
+    int n = unique(a.begin(), a.end()) - a.begin();
+    cout <<  "Unique Integers: " << n << endl; /// 3
     for ( int i = 0; i < n; i++ ) cout << a[i] << " "; /// 1 2 3
     cout << endl;
 
-    a = { 2, 3, 1, 5 };
-    cout << max_element( a.begin(), a.end() ) - a.begin() << endl; /// 3
-    cout << *max_element( a.begin(), a.end() ) << endl; /// 5
+    a = { 2, 3, 5, 5, 7, 7, 1 };
+
+    vector <int> :: iterator it = max_element(a.begin(), a.end());
+    cout << "Maximum Value: " << *it << endl;
+
+    cout << max_element( a.begin(), a.end() ) - a.begin() << endl; /// 4
+    cout << *max_element( a.begin(), a.end() ) << endl; /// 7
+
+    // 2D Vector
+    vector <vector <int> > vec;
+    vector<int> a1 = {2, 3, 4};
+    vector <int> a2 = {2, 3, 4, 5, 6};
+    vec.push_back(a1);
+    vec.push_back(a2);
+
+    for(auto u : vec) {
+        for(auto g : u) cout << g << " ";
+        cout << "\n";
+    }
 
     return 0;
 }
